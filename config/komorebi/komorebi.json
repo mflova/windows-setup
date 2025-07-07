@@ -9,6 +9,10 @@
   "border_width": 3,
   "border_offset": -1,
   "window_handling_behaviour": "Async",
+  "bar_configurations": [
+    "C:/Users/FMAN/komorebi.bar.monitor1.json",
+    "C:/Users/FMAN/komorebi.bar.monitor2.json",
+  ],
   "theme": {
     "palette": "Base16",
     "name": "Ashes",
@@ -24,29 +28,61 @@
         },
         {
           "name": "2",
-          "layout": "VerticalStack"
+          "layout": "BSP"
         },
         {
           "name": "3",
-          "layout": "HorizontalStack"
+          "layout": "BSP"
         },
         {
           "name": "4",
-          "layout": "UltrawideVerticalStack"
+          "layout": "BSP"
         },
         {
           "name": "5",
-          "layout": "Rows"
+          "layout": "BSP"
         },
         {
           "name": "6",
-          "layout": "Grid"
+          "layout": "BSP"
         },
         {
           "name": "7",
-          "layout": "RightMainVerticalStack"
+          "layout": "BSP"
         }
       ]
-    }
+    },
+    {
+      "workspaces": [
+        {
+          "name": "1",
+          "layout": "BSP"
+        },
+        {
+          "name": "2",
+          "layout": "BSP"
+        },
+        {
+          "name": "3",
+          "layout": "BSP"
+        },
+        {
+          "name": "4",
+          "layout": "BSP"
+        },
+        {
+          "name": "5",
+          "layout": "BSP"
+        },
+        {
+          "name": "6",
+          "layout": "BSP"
+        },
+        {
+          "name": "7",
+          "layout": "BSP"
+        }
+      ]
+    },
   ]
 }

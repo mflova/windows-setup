@@ -78,7 +78,7 @@ def sync_yazi_files() -> None:
     print(f"Copied Yazi configuration from {source_dir} to {destination_dir}")
 
 if __name__ == "__main__":
-    shutil.rmtree(Path(__file__).parent / "config")
+    # shutil.rmtree(Path(__file__).parent / "config")
     sync_powershell_profile()
     sync_komorebi_files()
     sync_yazi_files()

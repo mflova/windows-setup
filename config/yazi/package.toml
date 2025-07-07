@@ -1,5 +1,17 @@
-[plugin]
-deps = []
+[[plugin.deps]]
+use = "wylie102/duckdb"
+rev = "3f8c863"
+hash = "5112de4ea9ce83c9b6aa748b3fad665d"
+
+[[plugin.deps]]
+use = "ourongxing/fast-enter"
+rev = "738356f"
+hash = "764fd8d4150b7a15050809114e65e993"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "b886025"
+hash = "e65e6528de15012b5ccdead4ed26b8bd"
 
 [[flavor.deps]]
 use = "956MB/vscode-dark-modern"

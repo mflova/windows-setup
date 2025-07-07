@@ -12,8 +12,7 @@ Komorebic(cmd) {
 #+e:: Run 'explorer.exe'
 #e::
 {
-    ; Run "powershell.exe -NoProfile -Command yazi"
-    Run "powershell.exe yazi"
+    Run "powershell -NoProfile yazi"
 }
 
 
@@ -29,8 +28,8 @@ Komorebic(cmd) {
 #f::Komorebic("toggle-maximize")
 
 ; Multiple monitor based
-#p::Komorebic("cycle-monitor")
-#+p::Komorebic("cycle-move-to-monitor")
+#p::Komorebic("cycle-monitor next")
+#+p::Komorebic("cycle-move-to-monitor next")
 
 ; Close window
 #+q::Komorebic("close")
@@ -42,14 +41,14 @@ Komorebic(cmd) {
 #+Right::Komorebic("move right")
 
 ; Workspaces
-#1::Komorebic("focus-workspace 0")
-#2::Komorebic("focus-workspace 1")
-#3::Komorebic("focus-workspace 2")
-#4::Komorebic("focus-workspace 3")
-#5::Komorebic("focus-workspace 4")
-#6::Komorebic("focus-workspace 5")
-#7::Komorebic("focus-workspace 6")
-#8::Komorebic("focus-workspace 7")
+#1::Komorebic("focus-workspaces 0")  ; Rename to `focus-workspace` to have individual workspaces
+#2::Komorebic("focus-workspaces 1")
+#3::Komorebic("focus-workspaces 2")
+#4::Komorebic("focus-workspaces 3")
+#5::Komorebic("focus-workspaces 4")
+#6::Komorebic("focus-workspaces 5")
+#7::Komorebic("focus-workspaces 6")
+#8::Komorebic("focus-workspaces 7")
 #Tab::Komorebic("focus-last-workspace")
 
 ; Move windows across workspaces

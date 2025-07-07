@@ -5,3 +5,34 @@ extract = [
 	{ run = '7z x %*',   desc = "Extract here", for = "windows" },
 ]
 edit = [{run = "vim %*", block=true, for = "windows"}]
+
+[plugin]  
+prepend_previewers = [  
+  { name = "*.csv", run = "duckdb" },  
+  { name = "*.tsv", run = "duckdb" },  
+  # { name = "*.json", run = "duckdb" },  
+  { name = "*.parquet", run = "duckdb" },  
+  { name = "*.txt", run = "duckdb" },  
+  { name = "*.xlsx", run = "duckdb" },  
+  { name = "*.db", run = "duckdb" },
+  { name = "*.duckdb", run = "duckdb" }
+]
+
+prepend_preloaders = [  
+  { name = "*.csv", run = "duckdb", multi = false },  
+  { name = "*.tsv", run = "duckdb", multi = false },  
+  # { name = "*.json", run = "duckdb", multi = false },  
+  { name = "*.parquet", run = "duckdb", multi = false },
+  { name = "*.txt", run = "duckdb", multi = false },  
+  { name = "*.xlsx", run = "duckdb", multi = false }
+]
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*"
+run  = "git"
+
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*/"
+run  = "git"
