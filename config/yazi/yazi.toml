@@ -1,0 +1,7 @@
+[opener]
+extract = [
+	# { run = 'ya pub extract --list "$@"', desc = "Extract here", for = "unix" },
+	# { run = 'ya pub extract --list %*',   desc = "Extract here", for = "windows" },
+	{ run = '7z x %*',   desc = "Extract here", for = "windows" },
+]
+edit = [{run = "vim %*", block=true, for = "windows"}]
