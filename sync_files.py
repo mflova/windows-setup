@@ -5,6 +5,28 @@ import shutil
 from pathlib import Path
 
 
+def sync_windows_terminal_settings() -> None:
+    settings_json = (
+        Path(os.environ["USERPROFILE"])
+        / "scoop"
+        / "apps"
+        / "windows-terminal"
+        / "current"
+        / "settings"
+        / "settings.json"
+    )
+    destination_folder = Path(__file__).parent / "config" / "windows-terminal"
+    destination_folder.mkdir(parents=True, exist_ok=True)
+    destination_file = destination_folder / "settings.json"
+    if not settings_json.exists():
+        print(f"Windows Terminal settings file not found at: {settings_json}")
+        return
+
+    # Copy the settings file to the destination folder
+    shutil.copy2(settings_json, destination_file)
+    print(f"Windows Terminal settings copied to: {destination_file}")
+
+
 def sync_powershell_profile() -> None:
     """Copies the user's PowerShell profile to the local 'config/powershell' directory."""
     # Resolve the default PowerShell profile path
@@ -13,7 +35,9 @@ def sync_powershell_profile() -> None:
     folder = folders[0]
     documents = list(folder.glob("Documents"))
     assert len(documents) == 1, "Expected exactly one Documents folder"
-    profile_path = documents[0] / "WindowsPowerShell" / "Microsoft.PowerShell_profile.ps1"
+    profile_path = (
+        documents[0] / "WindowsPowerShell" / "Microsoft.PowerShell_profile.ps1"
+    )
 
     if not profile_path.exists():
         print(f"PowerShell profile not found at {profile_path}")
@@ -29,6 +53,7 @@ def sync_powershell_profile() -> None:
 
     print(f"PowerShell profile copied to: {destination_file}")
 
+
 def sync_komorebi_files() -> None:
     """Finds and copies all files under the user's home directory that contain 'komorebi'."""
     user_home = Path(os.environ["USERPROFILE"])
@@ -36,7 +61,9 @@ def sync_komorebi_files() -> None:
     destination_base.mkdir(parents=True, exist_ok=True)
 
     # Find all matching files (case-insensitive)
-    matches = [f for f in user_home.glob("*") if f.is_file() and "komorebi" in f.name.lower()]
+    matches = [
+        f for f in user_home.glob("*") if f.is_file() and "komorebi" in f.name.lower()
+    ]
 
     if not matches:
         print("No matching Komorebi files found.")
@@ -54,6 +81,7 @@ def sync_komorebi_files() -> None:
         shutil.copy2(source_file, destination_file)
 
     print(f"Copied {len(matches)} Komorebi files to {destination_base}")
+
 
 def sync_yazi_files() -> None:
     """Copies the entire %APPDATA%/yazi directory to the local 'config/yazi' directory."""
@@ -77,8 +105,32 @@ def sync_yazi_files() -> None:
 
     print(f"Copied Yazi configuration from {source_dir} to {destination_dir}")
 
+
+def sync_nvim_files() -> None:
+    source_dir = Path(os.environ["APPDATA"]).parent / "Local" / "nvim"
+    destination_dir = Path(__file__).parent / "config" / "nvim"
+
+    if not source_dir.exists():
+        print(f"NVIM directory not found at: {source_dir}")
+
+    # Create destination directory if it doesn't exist
+    destination_dir.mkdir(parents=True, exist_ok=True)
+
+    # Copy all contents from source_dir to destination_dir
+    for item in source_dir.iterdir():
+        dest_item = destination_dir / item.name
+        if item.is_dir():
+            shutil.copytree(item, dest_item, dirs_exist_ok=True)
+        else:
+            shutil.copy2(item, dest_item)
+
+    print(f"Copied Nvim configuration from {source_dir} to {destination_dir}")
+
+
 if __name__ == "__main__":
     # shutil.rmtree(Path(__file__).parent / "config")
+    sync_windows_terminal_settings()
     sync_powershell_profile()
     sync_komorebi_files()
     sync_yazi_files()
+    sync_nvim_files()

@@ -9,6 +9,8 @@ Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory
 Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Import-Module posh-git
 
+Set-Alias v nvim
+
 # Yazi updates directory when moving inside the app
 function y {
     $tmp = [System.IO.Path]::GetTempFileName()
@@ -149,3 +151,8 @@ Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
 # `echo $profile` in PowerShell):
 #
 # Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
+function kr {
+    komorebic stop --ahk --bar
+    komorebic start --ahk --bar
+}

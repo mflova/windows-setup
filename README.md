@@ -5,13 +5,35 @@
 ### Terminal based
 
 1. Install powershell
-2. Install Oh-My-Posh
-3. Install nerdfonts
-4. Install scoop (package manager)
-5. Copy the profile of the repo (`.ps1` file) into `\Documents\WindowsPowerShell`
+2. Install scoop (package manager)
+4. Install Windows terminal via scoop
+5. Copy configuration settings to its corresponding place
+6. Install Oh-My-Posh
+7. Install nerdfonts (roboto). It can be done via scoop
+8. Copy the profile of the repo (`.ps1` file) into `\Documents\WindowsPowerShell`
     - Some stuff will faill unless all the other following apps are set up.
 
 ### Specific apps
+
+#### Neovim/Lazyvim
+
+1. Install nodejs via scoop
+2. Install neovim via scoop
+3. Follow installation instructions from lazyvim
+4. Launch neovim
+5. Install luarocks with either:
+  - The official website
+  - `winget install --id=DEVCOM.Lua  -e`
+6. Authenticate copilot with `:Copilot auth`
+7. Install some extras via `:LazyExtas`. These should be already done by the config but it is written just in case.
+  - Install different extensions that might be needed with `x` In my case, from languages: json, toml, python and markdown
+  - From Plugins:
+    - test.core
+    - ai.core
+    - coding.yanky
+    - editor.inc-rename
+    - lang.yaml
+    - overseer.nvim (task-related such as VSCode)
 
 #### Git
 
