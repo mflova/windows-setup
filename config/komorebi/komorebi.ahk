@@ -23,6 +23,10 @@ Komorebic(cmd) {
 #Up::Komorebic("focus up")
 #Right::Komorebic("focus right")
 #::Komorebic("focus-last-workspace")
+#h::Komorebic("focus left")
+#j::Komorebic("focus down")
+#k::Komorebic("focus up")
+#l::Komorebic("focus right")
 
 
 ; Toggle maximize
@@ -40,6 +44,10 @@ Komorebic(cmd) {
 #+Down::Komorebic("move down")
 #+Up::Komorebic("move up")
 #+Right::Komorebic("move right")
+#+h::Komorebic("move left")
+#+j::Komorebic("move down")
+#+k::Komorebic("move up")
+#+l::Komorebic("move right")
 
 ; Workspaces
 #1::Komorebic("focus-workspaces 0")  ; Rename to `focus-workspace` to have individual workspaces
