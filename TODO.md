@@ -1,5 +1,9 @@
 # TODO
 
+## Neovim
+
+- Coding:
+  - Find the way to color non defined symbols with white. So far, `:Inspect` shows the type of symbol but it seems that there is no difference between defined and non defined symbols.
 - Testing:
   - Run current file with neotest (leader tt) does not work
 - Coding:

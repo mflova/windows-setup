@@ -5,7 +5,10 @@
 ### Terminal based
 
 1. Install powershell
-2. Install scoop (package manager)
+2. Install oh-my-posh following windows instructions. This usually requires:
+  - Installation via winget
+  - Add a line to the $PROFILE of powershell to load oh-my-posh
+3. Install scoop (package manager)
 4. Install Windows terminal via scoop
 5. Copy configuration settings to its corresponding place
 6. Install Oh-My-Posh
