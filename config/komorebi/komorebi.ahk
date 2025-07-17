@@ -6,15 +6,15 @@ Komorebic(cmd) {
 }
 
 ; Programs
-#Enter::Run("wt.exe")
+#Enter::Run("wt.exe powershell.exe -nologo")
 #+Enter::Run("http://color.aurlien.net/#72749e")
 #v:: Run("code", "", "Hide")
 #+e:: Run 'explorer.exe'
 #e::
 {
-    Run "wt.exe powershell.exe yazi"
+    Run "wt.exe powershell.exe -nologo yazi"
 }
-#g:: Run "wt.exe powrershell.exe lazygit"
+#g:: Run "wt.exe powrershell.exe -nologo lazygit"
 
 
 ; Focus windows

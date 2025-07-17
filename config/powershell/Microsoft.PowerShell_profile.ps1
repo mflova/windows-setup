@@ -1,5 +1,3 @@
-oh-my-posh.exe init pwsh | Invoke-Expression
-
 $env:YAZI_FILE_ONE = "C:\Program Files\Git\usr\bin\file.exe"
 
 Import-Module PSFzf
@@ -156,3 +154,10 @@ function kr {
     komorebic stop --ahk --bar
     komorebic start --ahk --bar
 }
+
+Set-Alias grep Select-String
+
+Remove-Item alias:ls -Force
+function ls { eza --long --icons=always --git --bytes @args }
+
+Invoke-Expression (&starship init powershell)

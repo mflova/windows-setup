@@ -5,15 +5,14 @@
 ### Terminal based
 
 1. Install powershell
-2. Install oh-my-posh following windows instructions. This usually requires:
-  - Installation via winget
-  - Add a line to the $PROFILE of powershell to load oh-my-posh
-3. Install scoop (package manager)
-4. Install Windows terminal via scoop
-5. Copy configuration settings to its corresponding place
-6. Install Oh-My-Posh
-7. Install nerdfonts (roboto). It can be done via scoop
-8. Copy the profile of the repo (`.ps1` file) into `\Documents\WindowsPowerShell`
+2. Install scoop (package manager)
+3. Install starship via scoop
+4. Install eza via scoop
+5. Install Windows terminal via scoop
+6. Copy configuration settings to its corresponding place
+7. Install Oh-My-Posh
+8. Install nerdfonts (roboto). It can be done via scoop
+9. Copy the profile of the repo (`.ps1` file) into `\Documents\WindowsPowerShell`
     - Some stuff will faill unless all the other following apps are set up.
 
 ### Specific apps
