@@ -4,9 +4,11 @@ return {
     picker = {
       enabled = true,
       exclude = {
+        ".venv",
         ".ruff_cache",
         ".pytest_cache",
         ".mypy_cache",
+        "site",
         "__pycache__",
         "*egg-info*",
       },
