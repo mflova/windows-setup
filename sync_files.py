@@ -126,11 +126,46 @@ def sync_nvim_files() -> None:
 
     print(f"Copied Nvim configuration from {source_dir} to {destination_dir}")
 
+def sync_git_config() -> None:
+    """Copies the .gitconfig file from the user's home directory to the local 'config/git' directory, excluding the [user] section."""
+    source_file = Path(os.environ["USERPROFILE"]) / ".gitconfig"
+    destination_dir = Path(__file__).parent / "config" / "git"
+    
+    if not source_file.exists():
+        print(f"Git config file not found at: {source_file}")
+        return
+    
+    # Create destination directory if it doesn't exist
+    destination_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Read the source file and filter out the [user] section
+    destination_file = destination_dir / ".gitconfig"
+    with open(source_file, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    
+    # Filter out [user] section
+    filtered_lines = []
+    skip_section = False
+    for line in lines:
+        # Check if we're starting a new section
+        if line.strip().startswith('['):
+            skip_section = line.strip().lower().startswith('[user')
+        
+        # Add line if we're not in the [user] section
+        if not skip_section:
+            filtered_lines.append(line)
+    
+    # Write the filtered content to the destination file
+    with open(destination_file, 'w', encoding='utf-8') as f:
+        f.writelines(filtered_lines)
+    
+    print(f"Git config copied to: {destination_file} (excluded [user] section)")
 
 if __name__ == "__main__":
     # shutil.rmtree(Path(__file__).parent / "config")
     sync_windows_terminal_settings()
     sync_powershell_profile()
+    sync_git_config()
     sync_komorebi_files()
-    sync_yazi_files()
     sync_nvim_files()
+    # sync_yazi_files()

@@ -8,6 +8,7 @@ Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 Import-Module posh-git
 
 Set-Alias v nvim
+Set-Alias -Name lg -Value lazygit
 
 # Yazi updates directory when moving inside the app
 function y {
@@ -161,3 +162,5 @@ Remove-Item alias:ls -Force
 function ls { eza --long --icons=always --git --bytes @args }
 
 Invoke-Expression (&starship init powershell)
+(& uv generate-shell-completion powershell) | Out-String | Invoke-Expression
+(& uvx --generate-shell-completion powershell) | Out-String | Invoke-Expression

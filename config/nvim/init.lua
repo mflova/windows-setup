@@ -1,5 +1,6 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
+vim.lsp.config("ty", { cmd = { "uvx", "ty", "server" } })
 vim.lsp.enable("ty")
 
 LazyVim.config.kind_filter = {
