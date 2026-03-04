@@ -161,11 +161,28 @@ def sync_git_config() -> None:
     
     print(f"Git config copied to: {destination_file} (excluded [user] section)")
 
+
+def sync_lazygit_config() -> None:
+    """Copies LazyGit config.yml to the local 'config/lazygit' directory."""
+    source_file = Path(os.environ["LOCALAPPDATA"]) / "lazygit" / "config.yml"
+    destination_dir = Path(__file__).parent / "config" / "lazygit"
+
+    if not source_file.exists():
+        print(f"LazyGit config file not found at: {source_file}")
+        return
+
+    destination_dir.mkdir(parents=True, exist_ok=True)
+    destination_file = destination_dir / "config.yml"
+    shutil.copy2(source_file, destination_file)
+
+    print(f"LazyGit config copied to: {destination_file}")
+
 if __name__ == "__main__":
     # shutil.rmtree(Path(__file__).parent / "config")
     sync_windows_terminal_settings()
     sync_powershell_profile()
     sync_git_config()
+    sync_lazygit_config()
     sync_komorebi_files()
     sync_nvim_files()
     # sync_yazi_files()

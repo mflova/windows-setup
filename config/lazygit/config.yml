@@ -1,0 +1,12 @@
+git:
+  paging:
+    colorArg: always
+    pager: delta -s --dark --paging=never --24-bit-color=never
+  pagers:
+    - pager: delta --dark --paging=never
+
+customCommands:
+  - key: 'o'
+    context: 'worktrees'
+    description: 'Abrir worktree seleccionado en VS Code'
+    command: 'code {{.SelectedWorktree.Path}}'

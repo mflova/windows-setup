@@ -17,6 +17,7 @@
 	maxretries = 5
 [core]
 	pager = delta
+	longpaths = true
 [interactive]
 	diffFilter = delta --color-only
 [delta]
