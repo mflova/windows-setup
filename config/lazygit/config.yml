@@ -1,10 +1,6 @@
 git:
-  paging:
-    colorArg: always
-    pager: delta -s --dark --paging=never --24-bit-color=never
   pagers:
-    - pager: delta --dark --paging=never
-
+    - externalDiffCommand: "C:/Users/FMAN/AppData/Local/lazygit/diff.bat"
 customCommands:
   - key: 'o'
     context: 'worktrees'

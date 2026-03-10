@@ -163,19 +163,36 @@ def sync_git_config() -> None:
 
 
 def sync_lazygit_config() -> None:
-    """Copies LazyGit config.yml to the local 'config/lazygit' directory."""
-    source_file = Path(os.environ["LOCALAPPDATA"]) / "lazygit" / "config.yml"
+    """Copies LazyGit config.yml and diff.bat to the local 'config/lazygit' directory."""
+    source_dir = Path(os.environ["LOCALAPPDATA"]) / "lazygit"
     destination_dir = Path(__file__).parent / "config" / "lazygit"
-
-    if not source_file.exists():
-        print(f"LazyGit config file not found at: {source_file}")
-        return
-
     destination_dir.mkdir(parents=True, exist_ok=True)
-    destination_file = destination_dir / "config.yml"
-    shutil.copy2(source_file, destination_file)
 
-    print(f"LazyGit config copied to: {destination_file}")
+    files_to_copy = ["config.yml", "diff.bat"]
+
+    missing = []
+    copied = []
+
+    for filename in files_to_copy:
+        source_file = source_dir / filename
+        if not source_file.exists():
+            missing.append(str(source_file))
+            continue
+
+        destination_file = destination_dir / filename
+        shutil.copy2(source_file, destination_file)
+        copied.append(str(destination_file))
+
+    if copied:
+        print("Copied:")
+        for f in copied:
+            print(f"  - {f}")
+
+    if missing:
+        print("Missing (not copied):")
+        for f in missing:
+            print(f"  - {f}")
+
 
 if __name__ == "__main__":
     # shutil.rmtree(Path(__file__).parent / "config")
