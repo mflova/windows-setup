@@ -4,5 +4,32 @@ git:
 customCommands:
   - key: 'o'
     context: 'worktrees'
-    description: 'Abrir worktree seleccionado en VS Code'
+    description: 'Open selected worktree in VS Code'
     command: 'code {{.SelectedWorktree.Path}}'
+
+  - key: 'W'
+    context: 'localBranches'
+    description: 'Create worktree in {repo}-wt/{branch}'
+    loadingText: 'Creating worktree...'
+    prompts:
+      - type: 'menu'
+        title: 'Post-command to be called after worktree'
+        key: 'PostCommand'
+        options:
+          - name: 'uv sync --dev'
+            description: 'Run dependency sync in the new worktree'
+            value: 'default'
+          - name: 'Nothing'
+            description: 'Do not run any post-command'
+            value: 'nothing'
+      - type: 'menu'
+        title: 'Open worktree after creation?'
+        key: 'OpenWorktree'
+        options:
+          - name: 'Yes'
+            description: 'Open the newly created worktree in VS Code'
+            value: 'yes'
+          - name: 'No'
+            description: 'Do not open the worktree'
+            value: 'no'
+    command: 'uv run --no-project -s C:/Users/FMAN/AppData/Local/lazygit/create_worktree.py {{.SelectedLocalBranch.Name | quote}} {{.Form.PostCommand | quote}} {{.Form.OpenWorktree | quote}}'

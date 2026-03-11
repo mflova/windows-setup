@@ -168,7 +168,7 @@ def sync_lazygit_config() -> None:
     destination_dir = Path(__file__).parent / "config" / "lazygit"
     destination_dir.mkdir(parents=True, exist_ok=True)
 
-    files_to_copy = ["config.yml", "diff.bat"]
+    files_to_copy = ["config.yml", "diff.bat", "create_worktree.py"]
 
     missing = []
     copied = []
